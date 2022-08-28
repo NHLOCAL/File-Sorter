@@ -2,7 +2,7 @@
 chcp 1255>nul
 MODE CON: COLS=80 lines=30
 color b
-set VER=6.0
+set VER=6.1
 title מסדר ההורדות %VER%
 
 :start
@@ -43,6 +43,9 @@ for %%i in (*.fon,*.ttf,*.ttc,*.fnt,*.otf) do md "קבצי הרצה/גופנים" & move "%%i"
 
 ::אדובי
 for %%i in (*.3dxml,*.prc,*.u3d,*.dwg,*.jt,*.xvl,*.stl,*.dxf,*.indd,*.ai,*.psd,*.indd) do md "מסמכים\קבצי אדוב" & move "%%i" "מסמכים\קבצי אדוב">>םוכיס & cls
+
+::קודולר
+for %%i in (*.aia,*.aix,*.ais) do md "מסמכים\קודולר" & move "%%i" "מסמכים\קודולר">>םוכיס & cls
 
 ::קבצי וידאו
 for %%i in (*.3g2,*.3gp,*.3gp2,*.3gpp,*.amr,*.amv,*.asf,*.avi,*.bdmv,*.bik,*.d2v,*.divx,*.drc,*.dsa,*.dsm,*.dss,*.dsv,*.evo,*.f4v,*.flc,*.fli,*.flic,*.flv,*.hdmov,*.ifo,*.ivf,*.m1v,*.m2p,*.m2t,*.m2ts,*.m2v,*.m4b,*.m4p,*.m4v,*.mkv,*.mp2v,*.mp4,*.mp4v,*.mpe,*.mpeg,*.mpg,*.mpls,*.mpv2,*.mpv4,*.mov,*.mts,*.ogm,*.ogv,*.pss,*.pva,*.qt,*.ram,*.ratdvd,*.rm,*.rmm,*.rmvb,*.roq,*.rpm,*.smil,*.smk,*.swf,*.tp,*.tpr,*.ts,*.vob,*.vp6,*.webm,*.wm,*.wmp,*.wmv) do if exist %%i md "וידאו" & move "%%i" "וידאו">>םוכיס & cls
