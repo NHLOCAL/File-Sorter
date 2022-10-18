@@ -2,7 +2,7 @@
 chcp 1255>nul
 MODE CON: COLS=80 lines=30
 color b
-set VER=6.1
+set VER=6.5
 title מסדר ההורדות %VER%
 
 :start
@@ -36,7 +36,7 @@ goto :go
 :go
 cls
 ::מסמכים
-for %%i in (*.chm,*.cpp,*.pub,*.pubx,*.csv,*.cxx,*.doc,*.docm,*.docx,*.dot,*.dotm,*.dotx,*.h,*.hpp,*.htm,*.html,*.hxx,*.ini,*.java,*.lua,*.mht,*.hteml,*.mhtml,*.odt,*.pdf,*.potx,*.potm,*.ppam,*.ppsm,*.ppsx,*.pps,*.ppt,*.pptm,*.pptx,*.rtf,*.sldm,*.sldx,*.thmx,*.txt,*.vsd,*.wpd,*.wps,*.wri,*.xlam,*.xls,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.xml) do if exist %%i md "מסמכים" & move "%%i" "מסמכים">>םוכיס & cls
+for %%i in (*.epub,*.chm,*.cpp,*.pub,*.pubx,*.csv,*.cxx,*.doc,*.docm,*.docx,*.dot,*.dotm,*.dotx,*.h,*.hpp,*.htm,*.html,*.hxx,*.ini,*.java,*.lua,*.mht,*.hteml,*.mhtml,*.odt,*.pdf,*.potx,*.potm,*.ppam,*.ppsm,*.ppsx,*.pps,*.ppt,*.pptm,*.pptx,*.rtf,*.sldm,*.sldx,*.thmx,*.txt,*.vsd,*.wpd,*.wps,*.wri,*.xlam,*.xls,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.xml) do if exist %%i md "מסמכים" & move "%%i" "מסמכים">>םוכיס & cls
 
 ::פונטים
 for %%i in (*.fon,*.ttf,*.ttc,*.fnt,*.otf) do md "קבצי הרצה/גופנים" & move "%%i" "קבצי הרצה/גופנים">>םוכיס & cls
@@ -60,7 +60,7 @@ for %%i in (*.7z,*.ace,*.arj,*.bz2,*.cab,*.gz,*.gzip,*.jar,*.r00,*.r01,*.r02,*.r
 for %%i in (*.exe,*.msi,*.msp,*.scr) do md "קבצי הרצה" & move "%%i" "קבצי הרצה">>םוכיס & cls
 
 ::אפליקציות
-for %%i in (*.apk,*.xapk) do md "קבצי הרצה\אפליקציות" & move "%%i" "קבצי הרצה\אפליקציות">>םוכיס & cls
+for %%i in (*.apk,*.xapk) do md "קבצי הרצה/אפליקציות" & move "%%i" "קבצי הרצה\אפליקציות">>םוכיס & cls
 
 ::סקריפטים
 for %%i in (*.cmd,*.ps1,*.reg) do md "קבצי הרצה/סקריפטים" & move "%%i" "קבצי הרצה/סקריפטים">>םוכיס & cls
@@ -98,7 +98,7 @@ if errorlevel 1 goto :folder-scanner
 ::מסדר התיקיות השלמות
 
 :folder-scanner
-for /d %%a in (*) do (set drive="%%a" & call :scanner)
+for /d %%a in (*) do (set drive="%%a" & set d_name="%%~na" & call :scanner)
 echo.
 goto :end
 
@@ -110,10 +110,12 @@ cd /d %drive%
 ::בדיקת מספר הקבצים בתיקיה הנוכחית
 set num_all=0
 for %%f in (*) do @(set /a num_all+=1 > nul)
+
 ::סריקת התיקיה ובדיקת מספר הקבצים שבה לפי סוג
 set num_fol=0
 for /d %%f in (*) do @(set /a num_fol+=1 > nul)
 if %num_fol% gtr 0 cd.. & exit /b 0
+
 set num_doc=0
 for %%f in (*.epub,*.chm,*.cpp,*.pub,*.csv,*.cxx,*.doc,*.dot,*.dotm,*.dotx,*.h,*.hpp,*.htm,*.html,*.hxx,*.ini,*.java,*.lua,*.mht,*.mhtml,*.odt,*.pdf,*.potx,*.potm,*.ppam,*.ppsm,*.ppsx,*.pps,*.ppt,*.rtf,*.sldm,*.sldx,*.thmx,*.txt,*.vsd,*.wpd,*.wps,*.wri,*.xlam,*.xls,*.xltm,*.xltx,*.xml) do @(set /a num_doc+=1 > nul)
 set num_prog=0
@@ -123,11 +125,11 @@ for %%f in (*.3g2,*.3gp,*.3gp2,*.3gpp,*.amr,*.amv,*.asf,*.avi,*.bdmv,*.bik,*.d2v
 set num_aud=0
 for %%f in (*.mp3,*.wav,*.wma) do @(set /a num_aud+=1 > nul)
 set num_pic=0
-for %%i in (*.bmp,*.gif,*.ico,*.jpe,*.jpeg,*.jpg,*.pcx,*.png,*.psd,*.tga,*.tif,*.tiff,*.wmf) do @(set /a num_pic+=1 > nul)
+for %%f in (*.bmp,*.gif,*.ico,*.jpe,*.jpeg,*.jpg,*.pcx,*.png,*.psd,*.tga,*.tif,*.tiff,*.wmf) do @(set /a num_pic+=1 > nul)
 set num_zip=0
-for %%i in (*.7z,*.ace,*.arj,*.bz2,*.cab,*.gz,*.gzip,*.jar,*.r00,*.r01,*.r02,*.r03,*.r04,*.r05,*.r06,*.r07,*.r08,*.r09,*.r10,*.r11,*.r12,*.r13,*.r14,*.r15,*.r16,*.r17,*.r18,*.r19,*.r20,*.r21,*.r22,*.r23,*.r24,*.r25,*.r26,*.r27,*.r28,*.r29,*.rar,*.tar,*.tgz,*.z,*.zip) do @(set /a num_zip+=1 > nul)
+for %%f in (*.7z,*.ace,*.arj,*.bz2,*.cab,*.gz,*.gzip,*.jar,*.r00,*.r01,*.r02,*.r03,*.r04,*.r05,*.r06,*.r07,*.r08,*.r09,*.r10,*.r11,*.r12,*.r13,*.r14,*.r15,*.r16,*.r17,*.r18,*.r19,*.r20,*.r21,*.r22,*.r23,*.r24,*.r25,*.r26,*.r27,*.r28,*.r29,*.rar,*.tar,*.tgz,*.z,*.zip) do @(set /a num_zip+=1 > nul)
 set num_apk=0
-for %%i in (*.apk) do @(set /a num_apk+=1 > nul)
+for %%f in (*.apk) do @(set /a num_apk+=1 > nul)
 
 
 ::הצגת מספר הקבצים שנמצאו לפי סוג
@@ -144,13 +146,19 @@ echo %num_apk% = תויצקילפא
 cd..
 ::רצף פקודות שבודק אם כל הקבצים בתיקיה הם מאותו הסוג
 ::ואם התנאי מתקיים הקבצים מועברים לתיקיה המתאימה
-if %num_all%==%num_doc% if %num_all% gtr 0 md "מסמכים" & move %drive% "מסמכים"
-if %num_all%==%num_prog% if %num_all% gtr 0 md "קבצי הרצה" & move %drive% "קבצי הרצה"
-if %num_all%==%num_vid% if %num_all% gtr 0 md "וידאו" move %drive% "וידאו"
-if %num_all%==%num_aud% if %num_all% gtr 0 md "אודיו" & move %drive% "אודיו"
-if %num_all%==%num_pic% if %num_all% gtr 0 md "תמונות" & move %drive% "תמונות"
-if %num_all%==%num_zip% if %num_all% gtr 0 md "קבצי ארכיון" & move %drive% "קבצי ארכיון"
-if %num_all%==%num_apk% if %num_all% gtr 0 md "קבצי הרצה\אפליקציות" & move %drive% "קבצי הרצה\אפליקציות"
+if %num_all%==%num_doc% if %num_all% gtr 0 if not %d_name% == "מסמכים" (md "מסמכים" & move %drive% "מסמכים")
+
+if %num_all%==%num_prog% if %num_all% gtr 0 if not %d_name% == "קבצי הרצה" (md "קבצי הרצה" move %drive% "קבצי הרצה")
+
+if %num_all%==%num_vid% if %num_all% gtr 0 if not %d_name% == "וידאו" (md "וידאו" & move %drive% "וידאו")
+
+if %num_all%==%num_aud% if %num_all% gtr 0 if not %d_name% == "אודיו" (md "אודיו" & move %d_name% "אודיו")
+
+if %num_all%==%num_pic% if %num_all% gtr 0 if not %d_name% == "תמונות" (md "תמונות" & move %drive% "תמונות")
+
+if %num_all%==%num_zip% if %num_all% gtr 0 if not %d_name% == "קבצי ארכיון" (md "קבצי ארכיון" & move %drive% "קבצי ארכיון")
+
+if %num_all%==%num_apk% if %num_all% gtr 0 if not %d_name% == "קבצי הרצה/אפליקציות" (md "קבצי הרצה/אפליקציות" & move %drive% "קבצי הרצה/אפליקציות")
 
 exit /b 0
 
