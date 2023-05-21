@@ -1,4 +1,4 @@
-# File-Sorter-en
+# File-Sorter
 Script to sort scattered files by type.
 The script is available in Hebrew and English
 
