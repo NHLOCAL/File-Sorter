@@ -1,6 +1,7 @@
 # File-Sorter
 Script to sort scattered files by type.
-The script is available in Hebrew and English
+
+The script is available in Hebrew and English.
 
 **Screenshot:**
 <div id="header" align="center">
