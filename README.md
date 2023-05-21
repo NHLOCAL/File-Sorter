@@ -1,8 +1,9 @@
-# מסדר ההורדות (ממיין קבצים)
-סקריפט למיון קבצים מפוזרים לפי סוג.
+# File-Sorter-en
+Script to sort scattered files by type.
+The script is available in Hebrew and English
 
-הסקריפט קיים בעברית בגרסה 6.5
+**Screenshot:**
+<div id="header" align="center">
+  <img src="https://user-images.githubusercontent.com/95597943/185516702-db03f12d-d202-466d-9211-f13813bd5736.png" width="600"/>
 
-ובאנגלית בגרסה 6.0 בקישור הזה:
-
-https://github.com/NHLOCAL/File-Sorter-en
+</div>
