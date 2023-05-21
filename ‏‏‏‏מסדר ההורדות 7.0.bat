@@ -2,7 +2,7 @@
 chcp 1255>nul
 MODE CON: COLS=80 lines=30
 color b
-set VER=6.5
+set VER=7.0
 title מסדר ההורדות %VER%
 
 :start
@@ -148,7 +148,7 @@ cd..
 ::ואם התנאי מתקיים הקבצים מועברים לתיקיה המתאימה
 if %num_all%==%num_doc% if %num_all% gtr 0 if not %d_name% == "מסמכים" (md "מסמכים" & move %drive% "מסמכים")
 
-if %num_all%==%num_prog% if %num_all% gtr 0 if not %d_name% == "קבצי הרצה" (md "קבצי הרצה" move %drive% "קבצי הרצה")
+if %num_all%==%num_prog% if %num_all% gtr 0 if not %d_name% == "קבצי הרצה" (md "קבצי הרצה" & move %drive% "קבצי הרצה")
 
 if %num_all%==%num_vid% if %num_all% gtr 0 if not %d_name% == "וידאו" (md "וידאו" & move %drive% "וידאו")
 
