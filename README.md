@@ -3,9 +3,9 @@ Script to sort scattered files by type.
 
 The script is available in Hebrew and English.
 
-You can download the latest version in English from this link:
+You can download the latest versions from this link:
 
-https://github.com/NHLOCAL/File-Sorter/releases/download/v5.3/File-Sorter-en-5.3.bat
+https://github.com/NHLOCAL/File-Sorter/releases
 
 
 
